@@ -8,7 +8,7 @@ const PORT = 8877;
 
 var nodemailer = require('nodemailer');
 
-app.get('/sendEmail/:nome/:email/:telefone/:mensagem', (request, response) => {
+app.post('/sendEmail/:nome/:email/:telefone/:mensagem', (request, response) => {
 
     var transporter = nodemailer.createTransport({
         service: 'gmail',
