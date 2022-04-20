@@ -16,9 +16,10 @@ const emailPass = process.env.EMAIL_PASSWORD;
 app.get('/', (request, response) => {
 	return response.send(
 		"<body>" +
+            "<br>"+
             "<h1 style='text-align: center'>" + "Rota (POST) disponível:" + "</h1>" +
-            "<p>/sendEmail/parametros</p>"+
-            "<span><b>Exemplo: <b> http://localhost:8877/sendEmail/pedrito/pedrito@yahoo.com.br/11%209998876-4462/Oi,%20gostaria%20de%20lorem%20ipusum%20lorem%20ipusumlorem%20ipusumlorem%20ipusumlorem%20ipusumlorem%20ipusumlorem%20ipusumlorem%20ipusumlorem%20ipusumlorem%20ipusumlorem%20ipusumlorem%20ipusum</span>"+
+            "<h2 style='text-align: center'>/sendEmail/parametros</h2>"+
+            "<h3 style='text-align: center'><b>Exemplo de utilização: <b> /sendEmail/{nome}/{email}/{telefone}/{mensagem_email}</h3>"+
 		"</body>"
 	);
 })
