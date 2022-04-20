@@ -3,7 +3,7 @@ const cors = require('cors');
 
 const app = express();
 app.use(cors());
-
+ 
 const PORT = 8877;
 
 var nodemailer = require('nodemailer');
@@ -66,7 +66,7 @@ app.post('/sendEmail/:nome/:email/:telefone/:mensagem', (request, response) => {
     transporter.sendMail(mailOptions, function (error, info) {
         if (!error) {
             return response.json({
-                "mensagem": "E-mail enviado",
+                "mensagem": "E-mail enviado com sucesso!",
                 "code": "200"
             });
         } else {
