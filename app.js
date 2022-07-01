@@ -28,18 +28,14 @@ app.get('/', (request, response) => {
 app.post('/sendEmail/:nome/:email/:telefone/:mensagem', (request, response) => {
 
     var transporter = nodemailer.createTransport({
-        service: 'outlook',
+        service: 'gmail',
         auth: {
             user: `${emailUser}`,
             pass: `${emailPass}`
-        },
-        tls: {
-            rejectUnauthorized: false
         }
     });
 
     let dadosRequisicao = {
-        emailEnviado: `${emailUser}`,
         nome: request.params.nome,
         telefone: request.params.telefone,
         emailContato: request.params.email,
@@ -57,8 +53,7 @@ app.post('/sendEmail/:nome/:email/:telefone/:mensagem', (request, response) => {
     }
 
     var mailOptions = {
-        from: `${emailUser}`,
-        // from: `${dadosRequisicao.emailContato}`,
+        from: `${dadosRequisicao.emailContato}`,
         to: `joaoporfiriocp@gmail.com`,
         subject: `E-mail enviado por ${dadosRequisicao.nome}`,
         html: `
@@ -93,7 +88,7 @@ app.post('/sendEmail/:nome/:email/:telefone/:mensagem', (request, response) => {
             });
         } else {
             return response.json({
-                "mensagem": error,
+                "mensagem": "Erro ao enviar o e-mail! Por favor, consulte o administrador do site.",
                 "code": "500"
             });
         }
